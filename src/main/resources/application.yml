@@ -1,0 +1,47 @@
+spring:
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+    prefix: classpath:/templates/
+    suffix: .html
+
+  # MySQL���ݿ�����
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/miaosha?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+    username: root
+    password: admin
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 15
+      minimum-idle: 5
+      idle-timeout: 30000
+
+  #配置springboot对redis的依赖
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 10
+#    password: admin
+    # 设置jedis连接池
+    jedis:
+      pool:
+        max-active: 50
+        min-idle: 20
+
+
+
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+
+#mq.nameserver.addr=81.68.194.150:9876
+#mq.topicname=stock
+#rocketmq:
+#  name-server: 81.68.194.150:9876
+#  producer:
+#    customized-trace-topic: stock
+
+rocketmq:
+  name-server: 81.68.194.150:9876
+  topicname: stock
